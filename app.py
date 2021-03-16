@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 from sklearn.ensemble import GradientBoostingClassifier
 
-model = pickle.load(open('credit_model1.pkl','rb'))
+model = pickle.load(open('diabetes_deploy (1).pkl','rb'))
 
 
 
@@ -26,9 +26,9 @@ def predict():
     output='{0:.{1}f}'.format(prediction[0][1], 2)
 
     if output>str(0.5):
-        return render_template('index.html',pred='There is a high chance of defaulting your loan, based on the entered data.')
+        return render_template('index.html',pred='There is a high chance of person suffering with diabetes, based on the entered data.')
     else:
-        return render_template('index.html',pred='we can santion him a loan, based on the entered data.')
+        return render_template('index.html',pred='There is a low chance of person suffering with diabetes, based on the entered data.')
 
 if __name__ == '__main__':
     app.run(debug=True)
